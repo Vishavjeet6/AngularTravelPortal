@@ -31,6 +31,7 @@ all set now run as java application
 
 
 * npm install
+* ng add @angular/material
 * ng serve
 
 You are all set 
