@@ -1,5 +1,13 @@
 # NagarroTravelPortal
 
+## Pre-requesties
+* Angular
+* Java
+* Tomcat
+* Spring Boot
+* MySQL
+* TypeScript
+
 ## How to start
 
 ### to configure server
