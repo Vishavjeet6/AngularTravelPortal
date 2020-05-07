@@ -139,16 +139,3 @@ Following technologies should be used to create the application:
 *	Admin/Employee App frontend – Angular, HTML, CSS, JS
 *	Application Backend - Java, Spring, Hibernate, Tomcat, MySQL
 *	Web-services – Spring, RESTful
-
-## Evaluation Criteria 
-
-The application will be evaluated against following criteria:
-1.	Basic application design and data structures usage.
-2.	Applications completion status.
-3.	Successful implementation of restful webservices.
-4.	Adhering to coding standards and guidelines.
-5.	Extra marks for attempting the Bonus Requirements.
-6.	Additional creativity and innovation will help to score better.
-7.	Face to Face discussion.
-
-### Note: Please feel free to make any assumptions wherever necessary and state them clearly in an assumption list you submit with your project. Also, please use your creativity and innovation to make this application as user friendly as you can
