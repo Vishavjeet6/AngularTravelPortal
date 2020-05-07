@@ -1,0 +1,30 @@
+<div class="container w-75">
+    <h2>Admin Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="loginAdmin()">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input placeholder="username@nagarro.com" type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" 
+          [(ngModel)]="admin.emailId" required #email="ngModel" [class.is-invalid]="email.invalid && email.touched"
+          pattern="^[A-Za-z.]+@nagarro.com$"
+          >
+          <div *ngIf="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngIf="email.errors.required">Email Id is required field</small>
+            <small class="text-danger" *ngIf="email.errors.pattern">Enter Nagarro Email Id</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input placeholder="Enter Password" type="password" class="form-control" name="password" id="exampleInputPassword1" required
+          [(ngModel)]="admin.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+          <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
+        </div>
+        <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <small class="float-right text-primary vishav-click" [routerLink]="['/login']">Login as User</small>
+    <br>
+    <br>
+    <div *ngIf="msg && msg.length > 0" class="alert alert-danger" role="alert">
+      {{ msg }}
+    </div>
+  </div>
+  

@@ -1,0 +1,182 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" >Nagarro</a>
+    <h4 style="color: white;">Welcome to Nagarro Admin Travel Portal</h4>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <button class="nav-link btn" (click)="signOut()" >Sign Out</button>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/adminhome']">
+                    <span data-feather="home"></span>
+                    Dashboard <span  class="sr-only">(current)</span>
+                </a>
+                </li>
+            </ul>
+        </div>
+      </nav>
+  
+      
+    </div>
+  </div>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2 class="h2">User Ticket Id {{ticket.id}}</h2>
+    </div>
+
+    <form #ticketdetails="ngForm">
+        <fieldset [disabled] = "isReadOnly">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="requestType1">Request Type</label>
+                <input type="requestType1" class="form-control" id="requestType1"
+                [(ngModel)]="ticket.requestType" name="requestType" #requestType ="ngModel" 
+                readonly
+                >
+            </div>
+            <div class="form-group col-md-6">
+                <label for="priority1">Priority</label>
+                <input id="priority1" class="form-control"
+                 [(ngModel)]="ticket.priority" name="priority" #priority ="ngModel" 
+                readonly
+                >
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="travelCity1">Travel City</label>
+                <input id="travelCity1" class="form-control"
+                required [(ngModel)]="ticket.travelCity" name="travelCity" #travelCity ="ngModel" 
+                readonly
+                >
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="fromCity1">From City</label>
+                <input id="fromCity1" class="form-control"
+                [(ngModel)]="ticket.fromCity" name="fromCity" #fromCity ="ngModel" 
+                readonly
+                >
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="startDate1">Travel Start Date</label>
+                <input type="text" class="form-control" id="startDate1"
+                [(ngModel)]="ticket.startDate" name="startDate" #startDate ="ngModel" 
+                readonly
+                >
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="endDate1">Travel End Date</label>
+                <input type="text" class="form-control" id="endDate1"
+                [(ngModel)]="ticket.endDate" name="endDate" #endDate ="ngModel" 
+                readonly
+                >
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="passport1">Passport</label>
+          <input type="text" class="form-control" id="passport1" maxlength="25" placeholder="Enter Passport Number"
+          [(ngModel)]="ticket.passportNumber" name="passport" #passport ="ngModel" 
+          readonly
+          >
+        </div>
+        <div class="form-group">
+            <label for="project1">Project Name</label>
+            <input type="text" class="form-control" id="project1" maxlength="100" placeholder="Enter Project Name"
+            [(ngModel)]="ticket.projectName" name="project" #project ="ngModel" 
+            readonly
+          >
+        </div>
+        <div class="form-group">
+            <label for="expenseBourneBy1">Project Name</label>
+            <input type="text" class="form-control" id="expenseBourneBy1" placeholder="Enter Project Name"
+            [(ngModel)]="ticket.expenseBourneBy" name="expenseBourneBy" #expenseBourneBy ="ngModel" 
+            readonly
+          >
+        </div>
+
+        <div class="form-group">
+            <label for="travel1">Travel Approver Name</label>
+            <input type="text" class="form-control" id="travel1" maxlength="100" placeholder="Manager/BU Head "
+            [(ngModel)]="ticket.travelApprover" name="travelApprover" #travelApprover ="ngModel"
+            readonly
+            >
+        </div>
+        <div class="form-group">
+            <label for="expectedDuration1">Expected Duration</label>
+            <input type="text" class="form-control" id="expectedDuration1" maxlength="100" placeholder="Expected Duration of Travel"
+            [(ngModel)]="ticket.expectedDuration" name="expectedDuration" #expectedDuration ="ngModel"
+            readonly
+            >
+        </div>
+        <div class="form-group">
+            <label for="upperBound1">Upper Bound</label>
+            <textarea class="form-control" id="upperBound1" maxlength="500" placeholder="Any Upper Bound on the allowed amount?" rows="3"
+            [(ngModel)]="ticket.upperBound" name="upperBound" #upperBound ="ngModel"
+            readonly
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="details1">Additional Details</label>
+            <textarea class="form-control" id="details1" maxlength="1000" placeholder="Any Additional Details" rows="3"
+            [(ngModel)]="ticket.additionalDetails" name="additionalDetails" #additionalDetails ="ngModel"
+            readonly
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="status1">Status</label>
+            <select class="form-control" id="status1" placeholder="Status" (change)='onOptionsSelected()'
+             [(ngModel)]="ticket.status" name="status" #status ="ngModel" 
+            >   
+                <option selected disabled>INPROCESS</option>
+                <option>APPROVED</option>
+                <option>SUBMITTED</option>
+            </select>
+                
+        </div>
+
+        <div class="form-group">
+            <label for="updatedAt1">Last Updated At</label>
+            <input type="text" class="form-control" id="updatedAt1" readonly  placeholder="Updated At"
+             [(ngModel)]="updateDate" name="updatedAt" #updatedAt ="ngModel" 
+             readonly
+            >   
+            </div>
+        <div class="form-group">
+        <label for="commentByAdmin1">Comment By Admin</label>
+        <textarea class="form-control" id="commentByAdmin1" maxlength="1000" placeholder="Comment By Admin" rows="3"
+        [(ngModel)]="ticket.commentByAdmin" name="commentByAdmin" #commentByAdmin ="ngModel" 
+        ></textarea> 
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Upload Additional Files</label>
+            <input type="file"  multiple class="form-control-file" id="exampleFormControlFile1"
+            (change)="fileChangeEvent($event)"
+            >
+        </div>
+    </fieldset>
+    <div *ngIf="uploadedFiles.length">
+        <div class="alert alert-info" role="alert">
+            Download Files
+          </div>
+        <div class="list-group" *ngFor="let file of uploadedFiles;">
+            <button type="button" (click)="downloadFile(file)" class="list-group-item list-group-item-action">{{file.name}}</button>
+          </div>
+    </div>
+        <button [disabled]="ticketdetails.form.invalid || isReadOnly" type="button" class="btn btn-primary mr-4" (click)="updateTicket()">Save Ticket</button>
+        <button  type="button" class="text-right btn btn-warning mr-4" [disabled]="!isReadOnly" (click)="editForm()">Edit Ticket</button>
+        <button type="button" class="btn btn-info" (click)="editForm()" [disabled]="isReadOnly" >Cancel</button>
+    </form>
+</main>

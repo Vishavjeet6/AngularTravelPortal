@@ -1,0 +1,25 @@
+<app-commoncode></app-commoncode>
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <table style="margin-top: 60px;" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Request Type</th>
+                <th scope="col">Ticket Status</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr *ngFor="let ticket of tickets; let i=index" (click)="ticketClick(ticket)">
+                    <td>{{i+1+page*5}}</td>
+                    <td>{{ticket.requestType}}</td>
+                    <td>{{ticket.status}}</td>
+                </tr>
+            </tbody>
+    </table>
+    <hr>
+    <ul class="nav nav-pills">
+        <li class="nav-item" *ngFor="let page of pages; let i=index">
+            <a href="" class="nav-link" (click)="setPage(i,$event)" [ngClass]="{'active': i==page}">{{i}}</a>
+        </li>
+    </ul>
+</main>

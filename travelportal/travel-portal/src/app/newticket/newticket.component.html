@@ -1,0 +1,194 @@
+<app-commoncode></app-commoncode>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Dashboard</h1>
+    </div>
+    <form #newTicketForm="ngForm" (ngSubmit)="doNeedful()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="requestType1">Request Type</label>
+                <select id="requestType1" class="form-control" 
+                required [(ngModel)]="ticket.requestType" name="requestType" #requestType ="ngModel" 
+                [class.is-invalid]="requestType.invalid && requestType.touched"
+                >
+                  <option>Travel Tickets</option>
+                  <option>Hotel Stay</option>
+                  <option>Visa</option>
+                  <option>Work Permit</option>
+                </select>
+                <small class="text-danger" [class.d-none]="requestType.valid || requestType.untouched">
+                  Request Type is required field
+                </small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="priority1">Priority</label>
+                <select id="priority1" class="form-control"
+                required [(ngModel)]="ticket.priority" name="priority" #priority ="ngModel" 
+                [class.is-invalid]="priority.invalid && priority.touched"
+                >
+                  <option>Normal</option>
+                  <option>Urgent</option>
+                  <option>Immediate</option>
+                </select>
+                <small class="text-danger" [class.d-none]="priority.valid || priority.untouched">
+                  Priority is required field
+                </small>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="travelCity1">Travel City</label>
+                <select id="travelCity1" class="form-control"
+                required [(ngModel)]="ticket.travelCity" name="travelCity" #travelCity ="ngModel" 
+                [class.is-invalid]="travelCity.invalid && travelCity.touched"
+                >
+                  <option *ngFor="let x of cities">{{ x }}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="travelCity.valid || travelCity.untouched">
+                  Travel City is required field
+                </small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="fromCity1">From City</label>
+                <select id="fromCity1" class="form-control"
+                required [(ngModel)]="ticket.fromCity" name="fromCity" #fromCity ="ngModel" 
+                [class.is-invalid]="fromCity.invalid && fromCity.touched"
+                >
+                  <option *ngFor="let x of cities">{{ x }}</option>
+                </select>
+                <small class="text-danger" [class.d-none]="fromCity.valid || fromCity.untouched">
+                  From City is required field
+                </small>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="startDate1">Travel Start Date</label>
+                <input type="date" class="form-control" id="startDate1"
+                required [(ngModel)]="ticket.startDate" name="startDate" #startDate ="ngModel" 
+                [class.is-invalid]="startDate.invalid && startDate.touched"
+                >
+                <small class="text-danger" [class.d-none]="startDate.valid || startDate.untouched">
+                  Start date is required field
+                </small>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="endDate1">Travel End Date</label>
+                <input type="date" class="form-control" id="endDate1"
+                required [(ngModel)]="ticket.endDate" name="endDate" #endDate ="ngModel" 
+                [class.is-invalid]="endDate.invalid && endDate.touched"
+                >
+                <small class="text-danger" [class.d-none]="endDate.valid || endDate.untouched">
+                  End date is required field
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="passport1">Passport</label>
+          <input type="text" class="form-control" id="passport1" maxlength="25" placeholder="Enter Passport Number"
+          required [(ngModel)]="ticket.passportNumber" name="passport" #passport ="ngModel" [class.is-invalid]="passport.invalid && passport.touched"
+          >
+          <small class="text-danger" [class.d-none]="passport.valid || passport.untouched">
+            Passport is required field
+          </small>
+        </div>
+        <div class="form-group">
+            <label for="project1">Project Name</label>
+            <input type="text" class="form-control" id="project1" maxlength="100" placeholder="Enter Project Name"
+            required [(ngModel)]="ticket.projectName" name="project" #project ="ngModel" [class.is-invalid]="project.invalid && project.touched"
+          >
+          <small class="text-danger" [class.d-none]="project.valid || project.untouched">
+            Project Name is required field
+          </small>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Expense Borne By</legend>
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input [(ngModel)]="expenseBourneBy" name="expenseBourneBy" 
+                  class="form-check-input" type="radio" id="gridRadios1" (change)="onItemChange($event.target.value)"
+                  value="Nagarro">
+                  <label class="form-check-label" for="gridRadios1">
+                    Nagarro
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input [(ngModel)]="expenseBourneBy" name="expenseBourneBy"
+                  class="form-check-input" type="radio" id="gridRadios2" (change)="onItemChange($event.target.value)"
+                  value="Client">
+                  <label class="form-check-label" for="gridRadios2">
+                    Client
+                  </label>
+                </div>
+              </div>
+            </div>
+        
+        </fieldset>
+        <div class="form-group">
+            <label for="travel1">Travel Approver Name</label>
+            <input type="text" class="form-control" id="travel1" maxlength="100" placeholder="Manager/BU Head "
+            [(ngModel)]="ticket.travelApprover" name="travelApprover" #travelApprover ="ngModel"
+            >
+        </div>
+        <div class="form-group">
+            <label for="expectedDuration1">Expected Duration</label>
+            <input type="text" class="form-control" id="expectedDuration1" maxlength="100" placeholder="Expected Duration of Travel"
+            [(ngModel)]="ticket.expectedDuration" name="expectedDuration" #expectedDuration ="ngModel"
+            >
+        </div>
+        <div class="form-group">
+            <label for="upperBound1">Upper Bound</label>
+            <textarea class="form-control" id="upperBound1" maxlength="500" placeholder="Any Upper Bound on the allowed amount?" rows="3"
+            [(ngModel)]="ticket.upperBound" name="upperBound" #upperBound ="ngModel"
+            ></textarea>
+        </div>
+        <div class="form-group">
+            <label for="details1">Additional Details</label>
+            <textarea class="form-control" id="details1" maxlength="1000" placeholder="Any Additional Details" rows="3"
+            [(ngModel)]="ticket.additionalDetails" name="additionalDetails" #additionalDetails ="ngModel"
+            ></textarea>
+        </div>
+        <button [disabled]="newTicketForm.form.invalid" type="submit" class="btn btn-primary">Generate Ticket</button>
+    </form>
+    <div *ngIf="er" class="alert alert-danger" role="alert">
+      {{msg}}
+    </div>
+</main>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{msg}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Request Type : {{ ticket.requestType }}</p>
+        <p class="text-center">Priority : {{ ticket.priority }}</p>
+        <p class="text-center">Travel City : {{ ticket.travelCity }}</p>
+        <p class="text-center">From City : {{ ticket.fromCity }}</p>
+        <p class="text-center">Travel Start Date : {{ ticket.startDate }}</p>
+        <p class="text-center">Travle End Date : {{ ticket.endDate }}</p>
+        <p class="text-center">Passport : {{ ticket.passportNumber }}</p>
+        <p class="text-center">Project Name : {{ ticket.projectName }}</p>
+        <p class="text-center">Expense Borne By : {{ ticket.expenseBourneBy }}</p>
+        <p class="text-center">Travel Approver Name : {{ ticket.travelApprover }}</p>
+        <p class="text-center">Expected Duration : {{ ticket.expectedDuration }}</p>
+        <p class="text-center">Upper Bound : {{ ticket.upperBound }}</p>
+        <p class="text-center">Additional Details : {{ ticket.additionalDetails }}</p>
+      </div>
+      <div class="modal-footer"> 
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="destroyTicketId()" [routerLink]="['/tickets']">Close</button>
+        <button type="button" class="btn btn-warning" (click)="PrintContent()">Print</button>
+        <button type="submit" class="btn btn-primary"  data-dismiss="modal">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
