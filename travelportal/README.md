@@ -35,3 +35,23 @@ all set now run as java application
 * ng serve
 
 You are all set 
+## User Login
+![Image description](img/userlogin.png)
+## Forgot Password
+![Image description](img/forgot.png)
+## User Registration
+![Image description](img/registration.png)
+## Corona 
+![Image description](img/corona1.png)
+![Image description](img/corona2.png)
+## New Ticket
+![Image description](img/newticket.png)
+## User Tickets
+![Image description](img/myticket.png)
+## Ticket Details
+![Image description](img/ticketdetail1.png)
+![Image description](img/ticketdetail2.png)
+## Admin Login
+![Image description](img/admin.png)
+## All Tickets
+![Image description](img/adminticket.png)
